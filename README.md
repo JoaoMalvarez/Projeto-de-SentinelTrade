@@ -1,4 +1,4 @@
-# Projeto-de-Projeto_de_Software
+# Projeto de Projeto de Software - SentinelTrade
 O sistema deverá permitir que investidores autorizados acompanhem cotações, mantenham carteira de ativos, enviem ordens de compra e venda e consultem o histórico de operações. Decisões erradas, atrasadas ou não auditáveis podem gerar impacto relevante. Aqui, o impacto é financeiro, regulatório e reputacional.
 
 O sistema deverá ser projetado como uma plataforma distribuída, segura, escalável e tolerante a falhas.
