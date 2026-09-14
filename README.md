@@ -8,14 +8,14 @@ A corretora fictícia Orion Capital opera uma plataforma digital de negociação
 
 A Orion Capital contratou sua equipe para especificar e modelar o SentinelTrade, uma plataforma que deverá:
 
-autenticar usuários com MFA;
-manter dados de investidores, contas, carteiras, ativos e limites financeiros;
-receber cotações em tempo quase real por meio de um provedor externo;
-permitir ordens de compra, venda, cancelamento e consulta;
-validar saldo, posição em carteira, limite de risco e situação do mercado antes de transmitir a ordem;
-integrar-se a uma Bolsa/Corretora simulada;
-acompanhar o ciclo de vida das ordens;
-registrar logs de auditoria imutáveis;
-notificar o investidor sobre execução, rejeição, cancelamento ou falha;
-operar com mecanismos de recuperação, indisponibilidade controlada e prevenção de duplicidade de ordens.
-Não é necessário integrar com uma bolsa real ou utilizar dinheiro real. O projeto deverá operar com ativos, contas e cotações simuladas.
+- autenticar usuários com MFA;
+- manter dados de investidores, contas, carteiras, ativos e limites financeiros;
+- receber cotações em tempo quase real por meio de um provedor externo;
+- permitir ordens de compra, venda, cancelamento e consulta;
+- validar saldo, posição em carteira, limite de risco e situação do mercado antes de transmitir a ordem;
+- integrar-se a uma Bolsa/Corretora simulada;
+- acompanhar o ciclo de vida das ordens;
+- registrar logs de auditoria imutáveis;
+- notificar o investidor sobre execução, rejeição, cancelamento ou falha;
+- operar com mecanismos de recuperação, indisponibilidade controlada e prevenção de duplicidade de ordens.
+- Não é necessário integrar com uma bolsa real ou utilizar dinheiro real. O projeto deverá operar com ativos, contas e cotações simuladas.
