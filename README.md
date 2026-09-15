@@ -6,8 +6,6 @@
 * Helen Santana de Araújo Teixeira / RA: 10742524
 * João Pedro Mazzante Alvarez / RA: 10723837
 * Vinicius Bisordi Acauã / RA: 10739883
-* Débora Lobato Santos / RA: 10732810
-
 ---
 
 ## Visão do Projeto
