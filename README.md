@@ -2,6 +2,7 @@
 
 ## Integrantes:
 
+* Débora Lobato Santos / RA: 10732810
 * Helen Santana de Araújo Teixeira / RA: 10742524
 * João Pedro Mazzante Alvarez / RA: 10723837
 * Vinicius Bisordi Acauã / RA: 10739883
@@ -28,6 +29,16 @@ O projeto tem o intuito de...
 
 ## Requisitos 
 
+### Engenharia de Requisitos 
+
+- [ ] Visão e objetivo do SentinelTrade
+- [ ] Identificação dos atores
+- [ ] Requisitos funcionais e não funcionais
+- [ ] Regras de negócio
+- [ ] Restrições técnicas
+- [ ] Critérios de aceitação
+- [ ] Matriz de rastreabilidade entre requisito, diagrama, implementação e teste
+
 ### Funcionais
 
 - [ ] Cadastro e gestão de investidores
@@ -40,6 +51,7 @@ O projeto tem o intuito de...
 - [ ] Acompanhamento do status da ordem
 - [ ] Notificações; consulta de histórico
 - [ ] Auditoria
+
 
 ### Segurança
 
