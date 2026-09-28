@@ -43,6 +43,7 @@ A conformidade regulatória exige que todas as transações, alterações de car
 
 ### Conclusão
 Em suma, o SentinelTrade transforma a operação de trading da Orion Capital em um ambiente robusto, onde a velocidade das cotações em tempo quase real caminha lado a lado com a blindagem contra fraudes, duplicidades e falhas sistêmicas. O projeto entrega à banca avaliadora uma especificação completa de engenharia de software voltada para sistemas críticos onde a tolerância a falhas não é um diferencial, mas um requisito obrigatório.
+
 ---
 
 ## Tecnologias
