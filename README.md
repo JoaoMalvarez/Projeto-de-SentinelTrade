@@ -10,33 +10,52 @@
 
 ## Visão do Projeto
 
-O projeto tem o intuito de...
+O SentinelTrade tem o intuito de unificar a gestão de contas, carteiras, cotações em tempo real e roteamento de ordens da Orion Capital, substituindo sistemas legados pouco integrados. O foco central é garantir rastreabilidade de ordens, controle rigoroso de risco, auditoria imutável e alta disponibilidade, mitigando impactos financeiros, regulatórios e reputacionais.
 
 ---
 
 ## Tecnologias
 
-*
+- Backend:
+- Frontend:
+- BFF:
+- Banco de Dados:
+- Infraestrutura:
 
 ---
 
 ## Instruções de Execução
 
-*
+Como o projeto está em fase inicial de especificação e modelagem, os serviços de código ainda serão implementados. Para clonar o repositório e preparar o ambiente base:
 
+1. Clone o Repositório
+```
+git clone <url-do-seu-repositorio>
+cd SentinelTrade
+```
+
+2. Crie o arquivo de variáveis de ambiente com base no exemplo:
+```
+cp .env.example .env
+```
+
+3. Suba a infraestrutura base (quando os containers estiverem configurados):
+```
+docker-compose up -d
+```
 ---
 
 ## Requisitos 
 
 ### Engenharia de Requisitos 
 
-- [ ] Visão e objetivo do SentinelTrade
-- [ ] Identificação dos atores
-- [ ] Requisitos funcionais e não funcionais
-- [ ] Regras de negócio
-- [ ] Restrições técnicas
-- [ ] Critérios de aceitação
-- [ ] Matriz de rastreabilidade entre requisito, diagrama, implementação e teste
+- [X] Visão e objetivo do SentinelTrade
+- [X] Identificação dos atores
+- [X] Requisitos funcionais e não funcionais
+- [X] Regras de negócio
+- [X] Restrições técnicas
+- [X] Critérios de aceitação
+- [X] Matriz de rastreabilidade entre requisito, diagrama, implementação e teste
 
 ### Funcionais
 
