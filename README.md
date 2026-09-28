@@ -14,6 +14,13 @@ O SentinelTrade nasce da necessidade preta de modernizar e blindar a infraestrut
 
 No mercado financeiro, falhas operacionais não representam apenas perdas técnicas; elas geram impactos diretos em três frentes críticas: financeira (perdas por execuções incorretas ou atrasadas), regulatória (penalidades por descumprimento de normas de conformidade) e reputacional (perda de confiança dos investidores). Para mitigar esses riscos, o SentinelTrade foi concebido como uma plataforma de trade financeiro distribuída, altamente segura, escalável e tolerante a falhas.
 
+## 📂 Estrutura do Repositório (`docs/`)
+A documentação técnica, modelagem e especificação do sistema encontram-se organizadas na pasta `docs/`:
+* `docs/01-visao-e-atores.md` — Visão geral, objetivos e identificação dos atores do sistema.
+* `docs/02-requisitos-e-regras.md` — Requisitos funcionais, não funcionais, regras de negócio e restrições técnicas.
+* `docs/03-criterios-e-rastreabilidade.md` — Critérios de aceitação e Matriz de Rastreabilidade.
+* `docs/requisitos.md` — 
+
 ### Pilares Arquiteturais e Funcionais
 1. Segurança e Autenticação Rigorosa
 A segurança é a camada inicial de defesa da plataforma. O acesso de investidores exige não apenas credenciais tradicionais com hash seguro, mas obrigatoriamente a verificação por Autenticação Multifator (MFA). Além disso, o controle de acesso por perfis garante que cada usuário interaja estritamente com seus próprios dados e limites financeiros, protegendo contra acessos não autorizados.
@@ -44,37 +51,6 @@ A conformidade regulatória exige que todas as transações, alterações de car
 ### Conclusão
 Em suma, o SentinelTrade transforma a operação de trading da Orion Capital em um ambiente robusto, onde a velocidade das cotações em tempo quase real caminha lado a lado com a blindagem contra fraudes, duplicidades e falhas sistêmicas. O projeto entrega à banca avaliadora uma especificação completa de engenharia de software voltada para sistemas críticos onde a tolerância a falhas não é um diferencial, mas um requisito obrigatório.
 
----
-
-## Tecnologias
-
-- Backend:
-- Frontend:
-- BFF:
-- Banco de Dados:
-- Infraestrutura:
-
----
-
-## Instruções de Execução
-
-Como o projeto está em fase inicial de especificação e modelagem, os serviços de código ainda serão implementados. Para clonar o repositório e preparar o ambiente base:
-
-1. Clone o Repositório
-```
-git clone <url-do-seu-repositorio>
-cd SentinelTrade
-```
-
-2. Crie o arquivo de variáveis de ambiente com base no exemplo:
-```
-cp .env.example .env
-```
-
-3. Suba a infraestrutura base (quando os containers estiverem configurados):
-```
-docker-compose up -d
-```
 ---
 
 ## Requisitos 
