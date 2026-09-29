@@ -15,11 +15,27 @@ O SentinelTrade nasce da necessidade preta de modernizar e blindar a infraestrut
 No mercado financeiro, falhas operacionais não representam apenas perdas técnicas; elas geram impactos diretos em três frentes críticas: financeira (perdas por execuções incorretas ou atrasadas), regulatória (penalidades por descumprimento de normas de conformidade) e reputacional (perda de confiança dos investidores). Para mitigar esses riscos, o SentinelTrade foi concebido como uma plataforma de trade financeiro distribuída, altamente segura, escalável e tolerante a falhas.
 
 ## 📂 Estrutura do Repositório (`docs/`)
-A documentação técnica, modelagem e especificação do sistema encontram-se organizadas na pasta `docs/`:
-* `docs/01-visao-e-atores.md` — Visão geral, objetivos e identificação dos atores do sistema.
-* `docs/02-requisitos-e-regras.md` — Requisitos funcionais, não funcionais, regras de negócio e restrições técnicas.
-* `docs/03-criterios-e-rastreabilidade.md` — Critérios de aceitação e Matriz de Rastreabilidade.
-* `docs/requisitos.md` — 
+
+O projeto está organizado da seguinte forma:
+
+```
+SentinelTrade/
+├── .env.example                # Exemplo de variáveis de ambiente
+├── README.md                   # Documentação principal e visão geral
+├── docs/                       # Documentação técnica e modelagem
+│   ├── diagramas/              # Arquivos visuais e modelagem comportamental[cite: 1]
+│   │   ├── 05-modelagem-comportamental.md
+│   │   ├── Diagrama de Casos de Uso.png
+│   │   ├── Diagrama de Máquina de Estados.png
+│   │   └── Diagrama de Sequência.png
+│   ├── 01-visão-e-atores.md    # Visão geral, objetivos e atores
+│   ├── 02-requisitos-e-regras.md # Requisitos funcionais, não funcionais e regras
+│   ├── 03-criterios-e-rastreabilidade.md # Critérios de aceitação e matriz
+│   ├── 04-arquitetura-e-dados.md # Arquitetura distribuída e DER
+│   └── requisitos.md           # Documento unificado de requisitos
+└── src/                        # Código-fonte do projeto[cite: 1]
+    └── codigo.java
+```
 
 ### Pilares Arquiteturais e Funcionais
 1. Segurança e Autenticação Rigorosa
