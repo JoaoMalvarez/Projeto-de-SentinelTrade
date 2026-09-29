@@ -18,7 +18,7 @@ No mercado financeiro, falhas operacionais não representam apenas perdas técni
 
 O projeto está organizado da seguinte forma:
 
-```
+```text
 SentinelTrade/
 ├── .env.example                # Exemplo de variáveis de ambiente
 ├── README.md                   # Documentação principal e visão geral
