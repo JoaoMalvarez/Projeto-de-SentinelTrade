@@ -20,21 +20,21 @@ O projeto está organizado da seguinte forma:
 
 ```text
 SentinelTrade/
-├── .env.example                # Exemplo de variáveis de ambiente
-├── README.md                   # Documentação principal e visão geral
-├── docs/                       # Documentação técnica e modelagem
-│   ├── diagramas/              # Arquivos visuais e modelagem comportamental[cite: 1]
+├── .env.example                        # Exemplo de variáveis de ambiente
+├── README.md                           # Documentação principal e visão geral
+├── docs/                               # Documentação técnica e modelagem
+│   ├── diagramas/                      # Arquivos visuais e modelagem comportamental
 │   │   ├── 05-modelagem-comportamental.md
 │   │   ├── Diagrama de Casos de Uso.png
 │   │   ├── Diagrama de Máquina de Estados.png
 │   │   └── Diagrama de Sequência.png
-│   ├── 01-visão-e-atores.md    # Visão geral, objetivos e atores
-│   ├── 02-requisitos-e-regras.md # Requisitos funcionais, não funcionais e regras
+│   ├── 01-visão-e-atores.md            # Visão geral, objetivos e atores
+│   ├── 02-requisitos-e-regras.md       # Requisitos funcionais, não funcionais e regras
 │   ├── 03-criterios-e-rastreabilidade.md # Critérios de aceitação e matriz
-│   ├── 04-arquitetura-e-dados.md # Arquitetura distribuída e DER
-│   └── requisitos.md           # Documento unificado de requisitos
-└── src/                        # Código-fonte do projeto[cite: 1]
-    └── codigo.java
+│   ├── 04-arquitetura-e-dados.md         # Arquitetura distribuída e DER
+│   └── requisitos.md                     # Documento unificado de requisitos
+└── src/                        
+    └── codigo.java             # Código-fonte do projeto - ainda não tem nada
 ```
 
 ### Pilares Arquiteturais e Funcionais
