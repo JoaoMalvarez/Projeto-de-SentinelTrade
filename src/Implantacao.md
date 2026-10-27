@@ -2,6 +2,8 @@
 
 > O SentinelTrade deverá ser implementado em Java ou Python. 
 
+> O SentinelTrade precisará de um 'Frontend', 'Backend' e 'BFF' (e talvez um Banco de Dados também).
+
 ## Construção do domínio, regras de negócio, serviços, persistência e testes, devendo cada equipe observar:
 
 [ ] Aplicação orientada a objetos, com encapsulamento, abstração, herança, interfaces ou classes abstratas.
