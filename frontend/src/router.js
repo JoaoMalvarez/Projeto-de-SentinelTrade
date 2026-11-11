@@ -6,6 +6,7 @@ const v = (n) => () => import(`./views/${n}.vue`)
 const routes = [
   { path: '/', name: 'home', component: v('Landing'), meta: { public: true } },
   { path: '/login', name: 'login', component: v('Login'), meta: { public: true, bare: true } },
+  { path: '/cadastro', component: v('Cadastro'), meta: { public: true, bare: true } },
   { path: '/mfa', name: 'mfa', component: v('Mfa'), meta: { bare: true } },
   { path: '/esqueci-senha', component: v('EsqueciSenha'), meta: { public: true, bare: true } },
   { path: '/dashboard', component: v('Dashboard'), meta: { roles: ['INVESTIDOR'] } },

@@ -19,6 +19,8 @@ Contas de teste (mesmas do `database/seed.sql`), senha `Teste@123`, código MFA:
 | auditor@orion.test | Auditor |
 | admin@orion.test | Admin |
 
+Também dá para criar uma conta nova em `/cadastro` (nome, e-mail, senha forte e configuração do MFA com QR code). A conta nova começa com R$ 10.000 simulados.
+
 ## Ligando ao BFF real
 1. Copie `.env.example` para `.env` e coloque `VITE_USE_MOCK=false`.
 2. Suba o BFF em `VITE_BFF_URL`. O contrato esperado está em `docs/backend-e-bff.md`.

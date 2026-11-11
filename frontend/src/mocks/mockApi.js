@@ -141,7 +141,7 @@ function validar(u, o) {
 export async function login(email, senha) {
   await sleep()
   const u = USERS[(email || '').toLowerCase()]
-  if (!u || senha !== SENHA) { audit(null, 'LOGIN_FALHA', 'INVESTIDOR', email); fail(401, 'Credenciais inválidas.') }
+  if (!u || senha !== (u.senha || SENHA)) { audit(null, 'LOGIN_FALHA', 'INVESTIDOR', email); fail(401, 'Credenciais inválidas.') }
   return { mfaToken: `mfa-${u.id}` }
 }
 export async function verificarMfa(mfaToken, codigo) {
@@ -149,7 +149,38 @@ export async function verificarMfa(mfaToken, codigo) {
   const u = byId(String(mfaToken).replace('mfa-', ''))
   if (!u || !/^\d{6}$/.test(codigo) || codigo === '000000') { audit(u, 'MFA_FALHA', 'INVESTIDOR', u?.id); fail(401, 'Código inválido ou expirado.') }
   audit(u, 'LOGIN_OK', 'INVESTIDOR', u.id)
-  return { token: `mock-${u.id}`, usuario: u }
+  const { senha: _omitir, ...usuario } = u // nunca devolver a senha
+  return { token: `mock-${u.id}`, usuario }
+}
+// ---------- cadastro de usuário (RF01) ----------
+const pendentes = {}
+const SENHA_FORTE = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/
+const B32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
+export async function cadastrar({ nome, email, senha }) {
+  await sleep(400)
+  nome = (nome || '').trim(); email = (email || '').trim().toLowerCase()
+  if (nome.length < 3) fail(400, 'Informe seu nome completo.')
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) fail(400, 'E-mail inválido.')
+  if (!SENHA_FORTE.test(senha || '')) fail(400, 'A senha deve ter 8+ caracteres, com maiúscula, minúscula, número e símbolo.')
+  if (USERS[email]) fail(409, 'Este e-mail já está cadastrado.')
+  Object.keys(pendentes).forEach((k) => pendentes[k].email === email && delete pendentes[k])
+  const segredo = Array.from({ length: 16 }, () => B32[Math.floor(Math.random() * 32)]).join('')
+  const cadastroToken = `cad-${Math.random().toString(36).slice(2)}${Date.now()}`
+  pendentes[cadastroToken] = { nome, email, senha, segredo }
+  return { cadastroToken, mfa: { segredo, otpauthUri: `otpauth://totp/SentinelTrade:${encodeURIComponent(email)}?secret=${segredo}&issuer=SentinelTrade` } }
+}
+export async function confirmarMfaCadastro(cadastroToken, codigo) {
+  await sleep(400)
+  const p = pendentes[cadastroToken] || fail(400, 'Cadastro expirado. Recomece.')
+  if (!/^\d{6}$/.test(codigo) || codigo === '000000') fail(401, 'Código inválido ou expirado.')
+  const id = `u${Object.keys(USERS).length + 1}`
+  USERS[p.email] = { id, nome: p.nome, email: p.email, perfil: 'INVESTIDOR', senha: p.senha } // mock: o backend real guarda só o hash
+  conta[id] = { disp: 10000, bloq: 0 } // saldo inicial simulado
+  limites[id] = { porOrdem: 20000, diario: 50000, ordensDia: 20 }
+  posicoes[id] = []
+  delete pendentes[cadastroToken]
+  audit(USERS[p.email], 'USUARIO_CRIADO', 'INVESTIDOR', id)
+  return { mensagem: 'Conta criada com sucesso.', saldoInicial: 10000 }
 }
 export async function esqueciSenha() { await sleep(); return { mensagem: 'Se o e-mail estiver cadastrado, você receberá as instruções.' } }
 export async function logout() { await sleep(100); return null }

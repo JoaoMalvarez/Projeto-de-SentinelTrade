@@ -1,14 +1,16 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { api } from '../services/api'
-import { brl, pct, cor, TIPOS } from '../utils'
+import { brl, pct, cor, norm, TIPOS } from '../utils'
 
 const route = useRoute()
 const lista = ref([]), erro = ref(''), carregando = ref(true)
 const busca = ref(route.query.q || ''), tipo = ref('')
 const atualizado = ref(Date.now()), agora = ref(Date.now())
 let parar, tick
+// pesquisar de novo pelo menu, já estando nesta tela, atualiza o filtro
+watch(() => route.query.q, (v) => { busca.value = v || '' })
 
 onMounted(async () => {
   try { lista.value = await api.ativos(); atualizado.value = Date.now() } catch (e) { erro.value = e.message } finally { carregando.value = false }
@@ -19,7 +21,7 @@ onUnmounted(() => { parar?.(); clearInterval(tick) })
 
 const filtrada = computed(() => lista.value.filter((a) =>
   (!tipo.value || a.tipo === tipo.value) &&
-  (!busca.value || `${a.ticker} ${a.nome}`.toLowerCase().includes(busca.value.toLowerCase()))))
+  (!busca.value || norm(`${a.ticker} ${a.nome}`).includes(norm(busca.value)))))
 const segundos = computed(() => Math.max(0, Math.floor((agora.value - atualizado.value) / 1000)))
 </script>
 

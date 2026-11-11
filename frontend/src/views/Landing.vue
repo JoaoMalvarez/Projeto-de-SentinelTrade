@@ -3,7 +3,7 @@
     <section class="hero">
       <h1>Sentinel Trade</h1>
       <p>Negocie ações, ETFs e fundos imobiliários com segurança, rastreabilidade e auditoria em cada ordem.</p>
-      <RouterLink to="/login" class="btn big">Comece Gratuitamente</RouterLink>
+      <RouterLink to="/cadastro" class="btn big">Comece Gratuitamente</RouterLink>
     </section>
 
     <section id="produtos" class="section">

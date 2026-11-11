@@ -18,3 +18,4 @@ export const FINAIS = ['EXECUTADA', 'REJEITADA', 'CANCELADA']
 export const TIMELINE = ['PENDENTE', 'VALIDADA', 'ENVIADA_BOLSA', 'EXECUTADA']
 export const TIPOS = { ACAO: 'Ação', ETF: 'ETF', FII: 'FII' }
 export const inicioDe = (perfil) => (perfil === 'AUDITOR' ? '/auditoria' : perfil === 'ADMIN' ? '/admin' : perfil === 'INVESTIDOR' ? '/dashboard' : '/')
+export const norm = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
