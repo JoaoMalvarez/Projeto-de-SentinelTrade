@@ -1,9 +1,9 @@
 package br.sentineltrade.auth;
 
-/**
- * Acesso a dados de credenciais do investidor. RF01.
- *
- * TODO: implementar.
- */
-public interface AuthRepository {
-}
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface AuthRepository extends JpaRepository<CredencialMfa, UUID> {
+    Optional<CredencialMfa> findByEmail(String email);
+}   

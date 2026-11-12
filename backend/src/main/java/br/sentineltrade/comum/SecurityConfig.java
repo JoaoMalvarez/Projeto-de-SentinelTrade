@@ -7,21 +7,23 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
- * Configuracao minima de seguranca: apenas /actuator/health e publico.
- * Todo o resto exige autenticacao.
- *
+ * Configuração mínima de segurança: apenas /actuator/health é público.
+ * Todo o resto exige autenticação.
+ * 
  * TODO: adicionar filtro JWT, perfis (INVESTIDOR, AUDITOR, ADMIN) e MFA.
  */
 @Configuration
 public class SecurityConfig {
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(AbstractHttpConfigurer::disable) // API stateless; revisar ao implementar JWT
+            .csrf(AbstractHttpConfigurer::disable) // API stateless; desabilitado para testes locais e JWT
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/actuator/health").permitAll()
-                .anyRequest().authenticated());
+                .anyRequest().authenticated()
+            );
+            
         return http.build();
     }
 }
