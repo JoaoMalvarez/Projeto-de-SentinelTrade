@@ -87,7 +87,9 @@ async function sair() {
       <RouterLink :to="{ path: '/', hash: '#produtos' }">Produtos</RouterLink>
       <RouterLink :to="{ path: '/', hash: '#mercados' }">Mercados</RouterLink>
       <RouterLink :to="{ path: '/', hash: '#corretoras' }">Corretoras</RouterLink>
+      <RouterLink :to="{ path: '/', hash: '#ot' }">Operação & Trading</RouterLink>
       <RouterLink :to="{ path: '/', hash: '#mais' }">Mais</RouterLink>
+      <RouterLink :to="{ path: '/', hash: '#faq' }">FAQ</RouterLink>
     </nav>
     <nav v-else class="nav-links">
       <template v-if="perfil === 'INVESTIDOR'">
