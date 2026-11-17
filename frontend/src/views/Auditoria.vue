@@ -1,13 +1,16 @@
 <script setup>
 import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { api } from '../services/api'
 import { useLoad } from '../composables'
 import { dt } from '../utils'
 
-const evento = ref(''), q = ref(''), integ = ref(null), verificando = ref(false)
-const EVENTOS = ['LOGIN_OK', 'LOGIN_FALHA', 'MFA_FALHA', 'ORDEM_CRIADA', 'ORDEM_VALIDADA', 'ORDEM_ENVIADA_BOLSA', 'ORDEM_EXECUTADA', 'ORDEM_REJEITADA', 'ORDEM_CANCELADA', 'LIMITES_ALTERADOS', 'MERCADO_ALTERADO']
+const route = useRoute()
+const evento = ref(''), q = ref(route.query.q || ''), integ = ref(null), verificando = ref(false)
+const EVENTOS = ['LOGIN_OK', 'LOGIN_FALHA', 'MFA_FALHA', 'ORDEM_CRIADA', 'ORDEM_VALIDADA', 'ORDEM_ENVIADA_BOLSA', 'ORDEM_EXECUTADA', 'ORDEM_REJEITADA', 'ORDEM_CANCELADA', 'USUARIO_CRIADO', 'LIMITES_ALTERADOS', 'MERCADO_ALTERADO']
 const { data: logs, erro, carregando, recarregar } = useLoad(() => api.auditoria({ evento: evento.value, q: q.value }), 4000)
 watch([evento, q], recarregar)
+watch(() => route.query.q, (v) => { q.value = v || '' })
 
 async function verificar() {
   verificando.value = true; integ.value = null

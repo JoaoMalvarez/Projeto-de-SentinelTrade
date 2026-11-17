@@ -27,6 +27,8 @@ export const api = {
   // Autenticação (RF01)
   login: (email, senha) => call(() => http('POST', '/auth/login', { email, senha }), () => mock.login(email, senha)),
   verificarMfa: (mfaToken, codigo) => call(() => http('POST', '/auth/mfa', { mfaToken, codigo }), () => mock.verificarMfa(mfaToken, codigo)),
+  cadastrar: (dados) => call(() => http('POST', '/auth/cadastro', dados), () => mock.cadastrar(dados)),
+  confirmarMfaCadastro: (cadastroToken, codigo) => call(() => http('POST', '/auth/cadastro/mfa', { cadastroToken, codigo }), () => mock.confirmarMfaCadastro(cadastroToken, codigo)),
   esqueciSenha: (email) => call(() => http('POST', '/auth/esqueci-senha', { email }), () => mock.esqueciSenha(email)),
   logout: () => call(() => http('POST', '/auth/logout'), () => mock.logout()),
 

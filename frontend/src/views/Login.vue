@@ -31,6 +31,7 @@ async function entrar() {
         <div style="text-align:right;margin-top:.4rem"><RouterLink to="/esqueci-senha" class="link">Esqueci a senha</RouterLink></div>
         <div v-if="erro" class="alert err">{{ erro }}</div>
         <button class="btn" :disabled="carregando">{{ carregando ? 'Entrando…' : 'Entrar' }}</button>
+        <div style="text-align:center;margin-top:.8rem"><RouterLink to="/cadastro" class="link">Não tem conta? Criar conta</RouterLink></div>
         <p v-if="demo" class="demo">Modo demonstração: ana@orion.test · bruno@orion.test · auditor@orion.test · admin@orion.test<br />Senha: Teste@123</p>
       </form>
     </div>
