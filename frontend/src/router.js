@@ -26,7 +26,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior: (to) => (to.hash ? { el: to.hash, behavior: 'smooth' } : { top: 0 })
+  scrollBehavior(to) {
+    if (!to.hash) return { top: 0 }
+    // desconta a altura da barra fixa, para ela não cobrir o título da seção
+    const nav = document.querySelector('.nav')
+    const fixa = nav && getComputedStyle(nav).position === 'sticky'
+    return { el: to.hash, top: (fixa ? nav.offsetHeight : 0) + 10, behavior: 'smooth' }
+  }
 })
 
 router.beforeEach((to) => {

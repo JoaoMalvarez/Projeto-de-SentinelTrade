@@ -43,7 +43,6 @@
     { q: 'Posso enviar a mesma ordem duas vezes por engano?', a: 'Não. Cada envio carrega uma chave de idempotência: se o mesmo pedido chegar de novo, o sistema devolve a ordem original.' },
     { q: 'Os registros de auditoria podem ser alterados?', a: 'Não. A auditoria é somente de inserção e usa uma cadeia de hashes, então qualquer adulteração é detectada.' }
   ]
-  const ano = new Date().getFullYear()
 </script>
 
 <template>
@@ -268,28 +267,5 @@
         </div>
       </div>
     </section>
-
-    <footer class="rodape">
-      <div class="rodape-in">
-        <div>
-          <strong>Sentinel Trade</strong>
-          <p class="muted small">Projeto acadêmico. A Orion Capital é fictícia e nenhum dinheiro real é movimentado.</p>
-        </div>
-        <div>
-          <strong>Plataforma</strong>
-          <p class="small">
-            <RouterLink to="/login">Entrar</RouterLink><br />
-            <RouterLink to="/cadastro">Criar conta</RouterLink><br />
-            <RouterLink :to="{ path: '/', hash: '#faq' }">Perguntas frequentes</RouterLink>
-          </p>
-        </div>
-        <div>
-          <strong>Equipe</strong>
-          <p class="muted small">João Pedro Mazzante Alvarez</p>
-        </div>
-      </div>
-      <p class="muted small" style="text-align:center;margin:1.5rem 0 0">© {{ ano }} Sentinel Trade · Dados simulados</p>
-    </footer>
-
   </main>
 </template>

@@ -12,6 +12,8 @@ const ativos = ref([])
 const aberto = ref(false)
 const destaque = ref(-1)
 const rolou = ref(false)
+const confirmandoSaida = ref(false)
+const aoTeclar = (e) => { if (e.key === 'Escape') confirmandoSaida.value = false }
 const logado = computed(() => !!session.token)
 const perfil = computed(() => session.user?.perfil)
 const investidor = computed(() => logado.value && perfil.value === 'INVESTIDOR')
@@ -22,8 +24,8 @@ async function carregar() {
   if (!investidor.value) return (naoLidas.value = 0)
   try { naoLidas.value = (await api.notificacoes()).filter((n) => !n.lida).length } catch {}
 }
-onMounted(() => { carregar(); t = setInterval(carregar, 4000); window.addEventListener('scroll', aoRolar, { passive: true }); aoRolar() })
-onUnmounted(() => { clearInterval(t); window.removeEventListener('scroll', aoRolar) })
+onMounted(() => { carregar(); t = setInterval(carregar, 4000); window.addEventListener('scroll', aoRolar, { passive: true }); aoRolar(); window.addEventListener('keydown', aoTeclar) })
+onUnmounted(() => { clearInterval(t); window.removeEventListener('scroll', aoRolar); window.removeEventListener('keydown', aoTeclar) })
 
 // ---------- pesquisa ----------
 // Investidor: sugestões de ativos enquanto digita (ignora acento e maiúscula).
@@ -58,6 +60,7 @@ function buscar() {
 function verTodos() { destaque.value = -1; buscar() }
 
 async function sair() {
+  confirmandoSaida.value = false
   try { await api.logout() } catch {}
   clearSession(); router.push('/')
 }
@@ -106,7 +109,18 @@ async function sair() {
     <RouterLink v-if="!logado" to="/login" class="btn">Entrar</RouterLink>
     <div v-else class="nav-user">
       <span class="muted small">{{ session.user?.nome }}</span>
-      <button class="btn" @click="sair">Sair</button>
+      <button class="btn" @click="confirmandoSaida = true">Sair</button>
     </div>
   </header>
+
+  <div v-if="confirmandoSaida" class="overlay" role="dialog" aria-modal="true" aria-labelledby="sair-titulo" @click.self="confirmandoSaida = false">
+    <div class="modal">
+      <h2 id="sair-titulo">Sair da conta?</h2>
+      <p class="muted">Tem certeza que deseja sair? Você precisará entrar novamente e informar o código MFA.</p>
+      <div class="row between">
+        <button class="btn ghost" @click="confirmandoSaida = false">Cancelar</button>
+        <button class="btn danger" @click="sair">Sair</button>
+      </div>
+    </div>
+  </div>
 </template>

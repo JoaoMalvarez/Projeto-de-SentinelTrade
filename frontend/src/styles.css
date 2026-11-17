@@ -5,6 +5,15 @@
   --overlay: rgba(0, 8, 2, 0.55);
   color-scheme: dark;
 }
+
+@font-face {
+  font-family: 'Audiowide';
+  src: url('/Techno_Font/Audiowide-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body { 
@@ -73,7 +82,7 @@ select.input { appearance: auto; }
 
 /* landing */
 .hero { text-align: center; padding: 6rem 1rem 4rem; }
-.hero h1 { font-size: clamp(3rem, 9vw, 6rem); margin: 0 0 .2em; letter-spacing: .01em; text-shadow: 0 0 1px #fff; }
+.hero h1 { font-family: 'Audiowide', 'Cormorant Garamond', sans-serif; font-weight: 400; font-size: clamp(2.2rem, 7vw, 4.5rem); }
 .hero p { max-width: 640px; margin: 0 auto 1.6rem; color: #dfe3ee; }
 .section { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; scroll-margin-top: 80px; }
 .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
@@ -177,3 +186,6 @@ tbody tr.click:hover { background: var(--panel); cursor: pointer; }
 .rodape-in { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
 .rodape p { margin: .4rem 0; } .rodape a:hover { text-decoration: underline; }
 @media (max-width: 700px) { .rodape-in { grid-template-columns: 1fr; } }
+
+#app { min-height: 100vh; display: flex; flex-direction: column; }
+#app > main { flex: 1; }
