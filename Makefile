@@ -2,7 +2,7 @@
 # Uso: make           (sobe tudo)   |   make help   (lista os comandos)
 
 .DEFAULT_GOAL := run
-.PHONY: run setup db-up db-down db-reset backend frontend install-frontend stop help
+.PHONY: run setup db-up db-down db-reset backend bff frontend install-frontend stop help
 
 ## setup: cria o .env a partir do .env.example, se ainda nao existir
 setup:
@@ -32,15 +32,20 @@ install-frontend:
 backend: setup
 	cd backend && mvn spring-boot:run
 
+## bff: roda o BFF Spring Boot (porta 3000)
+bff: setup
+	cd bff && mvn spring-boot:run
+
 ## frontend: roda o frontend Vue (porta 5173)
 frontend: install-frontend
 	cd frontend && npm run dev
 
-## run: sobe banco, backend e frontend juntos (Ctrl+C encerra backend e frontend)
+## run: sobe banco, backend, BFF e frontend juntos (Ctrl+C encerra todos)
 run: db-up
 	@echo ">> Backend:  http://localhost:8080/actuator/health"
+	@echo ">> BFF:      http://localhost:3000/actuator/health"
 	@echo ">> Frontend: http://localhost:5173"
-	$(MAKE) -j2 backend frontend
+	$(MAKE) -j3 backend bff frontend
 
 ## help: lista os comandos
 help:

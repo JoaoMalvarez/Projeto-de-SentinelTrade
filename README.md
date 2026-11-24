@@ -33,7 +33,7 @@ Projeto-de-SentinelTrade/
 │       │   └── SentinelTradeApplication.java
 │       ├── main/resources/application.yml
 │       └── test/java/br/sentineltrade/
-├── bff/                         # Backend For Frontend (a implementar)
+├── bff/                         # Backend For Frontend - Spring Boot (Java 21), porta 3000
 ├── frontend/                    # Vue 3 + Vite
 ├── database/                    # schema.sql, seed.sql, Rodar.md
 └── docs/
@@ -46,7 +46,7 @@ Projeto-de-SentinelTrade/
 - **Backend:** Java 21, Spring Boot 3.5 (Web, Data JPA, Security, Validation, Actuator), Maven
 - **Banco de dados:** PostgreSQL 16
 - **Frontend:** Vue 3 + Vite
-- **BFF:** a definir
+- **BFF:** Java 21, Spring Boot 3.5 (Web, Validation, Actuator) - ver [`bff/README.md`](bff/README.md)
 - **Infraestrutura local:** Docker Compose
 
 ## Como executar

@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: sentineltrade-bff
+  config:
+    import:
+      # Le o .env da raiz do projeto (rodando de bff/ ou da raiz). Nada de segredo aqui.
+      - optional:file:../.env[.properties]
+      - optional:file:./.env[.properties]
+  jackson:
+    deserialization:
+      # Campo desconhecido no corpo da requisicao = 400 (entrada estrita).
+      fail-on-unknown-properties: true
+      # Impede que "quantidade": 1.5 vire 1 silenciosamente.
+      accept-float-as-int: false
+      # Valores monetarios do backend chegam como BigDecimal (sem erro de arredondamento).
+      use-big-decimal-for-floats: true
+
+server:
+  port: ${BFF_PORT:3000}
+  max-http-request-header-size: 16KB
+  error:
+    # Nunca devolver stack trace ou detalhes internos.
+    include-stacktrace: never
+    include-message: never
+    include-exception: false
+
+bff:
+  # Endereco interno do backend Spring Boot.
+  backend-url: ${BACKEND_URL:http://localhost:8080}
+  # Chave compartilhada BFF <-> backend (header X-Bff-Key). Defina no .env.
+  chave-interna: ${BFF_INTERNAL_KEY:}
+  # Origens do frontend liberadas no CORS (separe varias por virgula).
+  origens-frontend: ${FRONTEND_ORIGIN:http://localhost:5173,http://127.0.0.1:5173}
+  # true em producao (HTTPS). Em localhost via http deixe false.
+  cookie-seguro: ${COOKIE_SECURE:false}
+  # So ative se o BFF estiver atras de um proxy reverso confiavel (usa X-Forwarded-For).
+  confiar-proxy: ${TRUST_PROXY:false}
+  timeout-conexao: 2s
+  timeout-leitura: 5s
+  sessao:
+    inatividade: 30m        # expira apos 30 min sem uso
+    duracao-maxima: 8h      # expira de qualquer jeito apos 8 h
+  limite:
+    auth-por-minuto: 20     # tentativas em /api/auth/* por IP por minuto
+    geral-por-minuto: 300   # demais rotas por IP por minuto
+    corpo-max-bytes: 16384  # 16 KB por requisicao
+  circuito:
+    falhas-para-abrir: 5    # falhas seguidas do backend que abrem o circuito
+    tempo-aberto: 30s       # tempo recusando chamadas antes de testar de novo
+  cotacoes:
+    intervalo-ms: 3000      # de quanto em quanto tempo busca cotacoes no backend
+    max-conexoes: 500       # limite de navegadores conectados no SSE
+    timeout-conexao: 10m    # o navegador reconecta sozinho depois disso
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  pattern:
+    # O correlation-id aparece em toda linha de log.
+    console: "%d{HH:mm:ss.SSS} %-5level [%X{correlationId:-}] %logger{24} - %msg%n"
